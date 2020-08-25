@@ -5,6 +5,9 @@ var SPEED=450
 var GRAVITY=1200
 var JUMPSPEED=600
 var velocity=Vector2()
+var has_double_jump=true
+var life=100
+var double_jump_cost=10
 func _ready():
 	pass # Replace with function body.
 
@@ -21,14 +24,26 @@ func _physics_process(delta):
 			$Sprite.flip_h=false
 	else:
 		velocity.x=0
-	if Input.is_action_pressed("jump") and is_on_floor() :
-		print(1)
-		velocity.y=-JUMPSPEED
+	if Input.is_action_just_pressed("jump") :
+		if is_on_floor():
+		
+			velocity.y=-JUMPSPEED
+		elif has_double_jump:
+			print(1)
+			double_jump()
 	
 	if not is_on_floor():
 		velocity.y+=GRAVITY*delta
+	else:
+		has_double_jump=true
 	velocity=move_and_slide(velocity,Vector2(0,-1))
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func double_jump():
+	velocity.y=-JUMPSPEED
+	has_double_jump=false
+	damage(double_jump_cost)
+
+func damage(damage):
+	life-=damage
+	if life<0:
+		queue_free()
