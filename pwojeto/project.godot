@@ -19,10 +19,6 @@ config/name="PWOjeto"
 run/main_scene="res://menus/main_menu.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-Global="*res://Global/global.gd"
-
 [display]
 
 window/size/width=1920
