@@ -17,5 +17,17 @@ shape = SubResource( 1 )
 position = Vector2( 13.0142, -6.50708 )
 polygon = PoolVector2Array( -5.36145, 491.573, 1930.5, 501.334, 1930.5, 764.871, 1.14563, 764.871 )
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( 2345.83, -160.504 )
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 841.813, 845.58 )
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2"]
+position = Vector2( -154.887, 263.417 )
+polygon = PoolVector2Array( -5.36145, 491.573, 1930.5, 501.334, 1930.5, 764.871, 1.14563, 764.871 )
+
 [node name="Character" parent="." instance=ExtResource( 1 )]
 position = Vector2( 917.5, 348.13 )

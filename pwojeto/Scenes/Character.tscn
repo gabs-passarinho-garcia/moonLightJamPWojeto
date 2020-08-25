@@ -17,3 +17,7 @@ shape = SubResource( 1 )
 position = Vector2( -0.540359, -1.62108 )
 scale = Vector2( 100, 100 )
 texture = SubResource( 2 )
+
+[node name="WallJumpTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
