@@ -7,7 +7,9 @@ extents = Vector2( 50.6484, 50.3809 )
 
 [sub_resource type="AnimatedTexture" id=2]
 
-[node name="Character" type="KinematicBody2D"]
+[node name="Character" type="KinematicBody2D" groups=[
+"character",
+]]
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

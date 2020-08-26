@@ -56,6 +56,7 @@ func wall_jump():
 		$WallJumpTimer.start()
 		damage(wall_jump_cost)
 		has_wall_jump=false
+		$Sprite.flip_h=(not $Sprite.flip_h)
 func damage(damage):
 	life-=damage
 	if life<0:
