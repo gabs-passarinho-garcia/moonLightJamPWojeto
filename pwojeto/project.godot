@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="PWOjeto"
-run/main_scene="res://menus/main_menu.tscn"
+run/main_scene="res://Scenes/menus/main_menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
