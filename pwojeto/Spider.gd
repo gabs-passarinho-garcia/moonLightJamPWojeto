@@ -7,6 +7,9 @@ var GRAVITY=100
 var is_jumping=false
 var JUMP_ANGLE=PI/6
 var JUMP_SPEED=1000
+var KNOCKBACK_ANGLE=PI/4
+var KNOCKBACK_SPEED=1000
+var DAMAGE=30
 func _ready():
 	pass
 
@@ -28,12 +31,16 @@ func _physics_process(delta):
 				velocity.y+=GRAVITY
 			if is_on_floor() and ((velocity.x<0 and  not $RayCastLeft.is_colliding() )or(velocity.x>0 and not $RayCastRight.is_colliding())):
 				jump()
-		elif (is_on_floor() or is_on_wall())and $JumpTimer.is_stopped():
+		elif (is_on_floor() or is_on_wall())and $JumpTimer.is_stopped() and $KnockbackTimer.is_stopped():
 			is_jumping=false
 		else:
 			velocity.y+=GRAVITY
 		velocity=move_and_slide(velocity,Vector2(0,-1))
-	
+		for i in get_slide_count():
+			var collision=get_slide_collision(i)
+			if collision and collision.collider.is_in_group("character"):
+				collision.collider.damage(DAMAGE)
+				knockback()
 
 
 
@@ -49,7 +56,24 @@ func _on_Area2D_body_exited(body):
 	if body.is_in_group("character"):
 		alvo=null
 func jump():
-	print(1)
+	
 	$JumpTimer.start()
 	is_jumping=true
-	velocity=Vector2(0,-1).rotated(JUMP_ANGLE)*JUMP_SPEED
+	if velocity.x>0:
+		velocity=Vector2(0,-1).rotated(JUMP_ANGLE)*JUMP_SPEED
+	else:
+		velocity=Vector2(0,-1).rotated(-JUMP_ANGLE)*JUMP_SPEED
+func knockback():
+	$KnockbackTimer.start()
+	is_jumping=true
+	if velocity.x>0:
+		velocity=Vector2(0,-1).rotated(KNOCKBACK_ANGLE)*KNOCKBACK_SPEED
+	else:
+		velocity=Vector2(0,-1).rotated(-KNOCKBACK_ANGLE)*KNOCKBACK_SPEED
+
+
+func _on_KnockbackTimer_timeout():
+	is_jumping=false
+	
+func hit():
+	queue_free()
