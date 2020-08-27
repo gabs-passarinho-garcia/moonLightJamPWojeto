@@ -33,4 +33,4 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Pause_menu" parent="CanvasLayer" instance=ExtResource( 2 )]
-visible = true
+visible = false
