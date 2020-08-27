@@ -15,7 +15,10 @@ func _ready():
 
 func _physics_process(delta):
 	
-		
+	if Input.is_action_pressed("ui_cancel"):
+		$CanvasLayer/Pause_menu.visible = true
+		get_tree().paused = true
+		pass
 	if Input.is_action_pressed("left") and $WallJumpTimer.is_stopped():
 		velocity.x=-SPEED
 		if $Sprite.flip_h==false:
