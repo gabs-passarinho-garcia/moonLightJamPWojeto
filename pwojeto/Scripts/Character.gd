@@ -85,6 +85,7 @@ func damage(damage):
 		
 func atack(body):
 	if body.is_in_group("enemy"):
+		print("cheguei")
 		body.hit()
 		pass
 	pass

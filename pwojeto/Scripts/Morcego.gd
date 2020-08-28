@@ -35,6 +35,7 @@ func _on_Range_body_exited(body):
 		alvo=null
 
 func hit():
+	print("cheguei")
 	queue_free()
 	
 func knockback():
