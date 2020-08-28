@@ -10,12 +10,14 @@ var JUMP_SPEED=1000
 var KNOCKBACK_ANGLE=PI/4
 var KNOCKBACK_SPEED=1000
 var DAMAGE=30
+var following=false
+var not_jumped=true
 func _ready():
 	pass
 
 
 func _physics_process(delta):
-	if alvo!=null:
+	if alvo!=null and following:
 		if not is_jumping:
 
 			if(global_position<alvo.global_position):
@@ -41,20 +43,26 @@ func _physics_process(delta):
 			if collision and collision.collider.is_in_group("character"):
 				collision.collider.damage(DAMAGE)
 				knockback()
+	elif alvo!=null:
+		follow_checker()
 
 
-
-func _on_Area2D_body_entered(body):
+func _on_Range_body_entered(body):
 	if body.is_in_group("character"):
-		$RayCast2D.set_cast_to(body.global_position-global_position)
-		$RayCast2D.force_raycast_update()
-		if $RayCast2D.get_collider()==body:
-			alvo=body
+		alvo=body
+		follow_checker()
 
+func follow_checker():
+	$RayCast2D.set_cast_to(alvo.global_position-global_position)
+	$RayCast2D.force_raycast_update()
+	if $RayCast2D.get_collider()==alvo:
+		following=true
 
-func _on_Area2D_body_exited(body):
+func _on_Range_body_exited(body):
 	if body.is_in_group("character"):
 		alvo=null
+		following=false
+		not_jumped=true
 func jump():
 	
 	$JumpTimer.start()
@@ -77,3 +85,9 @@ func _on_KnockbackTimer_timeout():
 	
 func hit():
 	queue_free()
+
+
+func _on_JumpRange_body_entered(body):
+	if body.is_in_group("character") and not_jumped:
+		jump()
+		not_jumped=false

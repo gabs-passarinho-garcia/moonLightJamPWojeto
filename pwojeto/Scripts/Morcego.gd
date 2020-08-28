@@ -4,8 +4,9 @@ var velocity=Vector2(0,0)
 var SPEED=200
 var DAMAGE=25
 var knockback_speed=1000
+var following=false
 func _physics_process(delta):
-	if alvo!=null and $KnockbackTimer.is_stopped():
+	if alvo!=null and following and $KnockbackTimer.is_stopped():
 		velocity=alvo.global_position-global_position
 		velocity=velocity.normalized()*SPEED
 	elif $KnockbackTimer.is_stopped():
@@ -18,6 +19,8 @@ func _physics_process(delta):
 		$AnimatedSprite.flip_h=false
 	elif velocity.x>0 and $AnimatedSprite.flip_h==false:
 		$AnimatedSprite.flip_h=true
+	if alvo!=null and not following:
+		
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character"):
