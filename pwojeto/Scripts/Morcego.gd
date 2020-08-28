@@ -4,6 +4,10 @@ var velocity=Vector2(0,0)
 var SPEED=200
 var DAMAGE=25
 var knockback_speed=1000
+
+func _ready():
+	add_to_group("enemy")
+	set_physics_process(true)
 func _physics_process(delta):
 	if alvo!=null and $KnockbackTimer.is_stopped():
 		velocity=alvo.global_position-global_position

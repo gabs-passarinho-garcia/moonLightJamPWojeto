@@ -11,6 +11,8 @@ var KNOCKBACK_ANGLE=PI/4
 var KNOCKBACK_SPEED=1000
 var DAMAGE=30
 func _ready():
+	
+	add_to_group("enemie")
 	pass
 
 
@@ -20,10 +22,15 @@ func _physics_process(delta):
 
 			if(global_position<alvo.global_position):
 				velocity.x=SPEED
+				$Sprite.flip_h = false
+				$AnimationPlayer.play("andando")
 			elif global_position>alvo.global_position:
+				$Sprite.flip_h = true
+				$AnimationPlayer.play("andando")
 				velocity.x=-SPEED
 			else:
 				velocity.x=0
+				$AnimationPlayer.play("parado")
 			if is_on_wall():
 
 				velocity.y=-CLIMBSPEED

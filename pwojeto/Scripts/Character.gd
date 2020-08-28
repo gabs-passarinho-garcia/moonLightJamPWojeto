@@ -10,7 +10,15 @@ var life=100
 var double_jump_cost=10
 var wall_jump_cost=5
 var has_wall_jump=true
+onready var espadaDir = $Espada
+onready var espadaEsq = $Espada2
+var direita = true
 func _ready():
+	if direita:
+		espadaDir.connect("body_entered",self,"atack")
+	else:
+		espadaEsq.connect("body_entered",self,"atack")
+	set_physics_process(true)
 	pass # Replace with function body.
 
 func _physics_process(delta):
@@ -19,14 +27,24 @@ func _physics_process(delta):
 		$CanvasLayer/Pause_menu.visible = true
 		get_tree().paused = true
 		pass
+	if Input.is_action_pressed("melee_atack"):
+		if direita:
+			$AnimationPlayer.play("golpeEspadaDireita")
+		else:
+			$AnimationPlayer.play("golpeEspadaEsquerda")
+		pass
 	if Input.is_action_pressed("left") and $WallJumpTimer.is_stopped():
 		velocity.x=-SPEED
 		if $Sprite.flip_h==false:
 			$Sprite.flip_h=true
+			#$Espada/Sprite.flip_h = true
+		direita = false
 	elif Input.is_action_pressed("right" ) and $WallJumpTimer.is_stopped():
 		velocity.x=SPEED
 		if $Sprite.flip_h==true:
 			$Sprite.flip_h=false
+			#$Espada/Sprite.flip_h = false
+		direita = true
 	elif $WallJumpTimer.is_stopped():
 		velocity.x=0
 	if Input.is_action_just_pressed("jump") :
@@ -64,3 +82,9 @@ func damage(damage):
 	life-=damage
 	if life<0:
 		queue_free()
+		
+func atack(body):
+	if body.is_in_group("enemy"):
+		body.hit()
+		pass
+	pass
