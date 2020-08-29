@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Tomou Dano 2.wav-2088ec89a094f49a186057ad41e8ee86.sample"
+
+[deps]
+
+source_file="res://Assets/Sound Design/Tomou Dano 2.wav"
+dest_files=[ "res://.import/Tomou Dano 2.wav-2088ec89a094f49a186057ad41e8ee86.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
