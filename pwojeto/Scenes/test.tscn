@@ -40,4 +40,4 @@ cell_size = Vector2( 32, 32 )
 format = 1
 
 [node name="Skeleton" parent="." instance=ExtResource( 2 )]
-position = Vector2( 185.944, 409.836 )
+position = Vector2( 248.865, 283.994 )

@@ -13,6 +13,7 @@ var JUMP_SPEED=1000
 var KNOCKBACK_ANGLE=PI/4
 var KNOCKBACK_SPEED=1000
 var DAMAGE=30
+var ATTACK_DAMAGE=50
 var following=false
 var not_jumped=true
 func _ready():
@@ -25,8 +26,18 @@ func _physics_process(delta):
 
 			if(global_position<alvo.global_position):
 				velocity.x=SPEED
+				if $Sprite.flip_h==false:
+					$Sprite.flip_h=true
+					$Sprite.position.x=-9.4
+					$Sprite2.flip_h=true
+					$Sprite2.position.x=26.9
 			elif global_position>alvo.global_position:
 				velocity.x=-SPEED
+				if $Sprite.flip_h==true:
+					$Sprite.flip_h=false
+					$Sprite2.position.x=7.95
+					$Sprite2.flip_h=false
+					$Sprite2.position.x=-26.4
 			else:
 				velocity.x=0
 			
@@ -56,12 +67,15 @@ func follow_checker():
 	$RayCast2D.force_raycast_update()
 	if $RayCast2D.get_collider()==alvo:
 		following=true
+		$AnimationPlayer.play("walking")
+	
 
 func _on_Range_body_exited(body):
 	if body.is_in_group("character"):
 		alvo=null
 		following=false
 		not_jumped=true
+		$AnimationPlayer.stop()
 
 func knockback():
 	$KnockbackTimer.start()
@@ -83,4 +97,24 @@ func _on_AttackRange_body_entered(body):
 	attack()
 	
 func attack():
-	pass
+	if $Sprite.flip_h==true:
+		$AnimationPlayer.play("attacking-right")
+	else:
+		$AnimationPlayer.play("attacking-left")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name=="attacking-right" or anim_name=="attacking-left":
+		$AnimationPlayer.play("walking")
+
+
+func _on_AttackLeft_body_entered(body):
+	if body.is_in_group("character"):
+		body.damage(ATTACK_DAMAGE)
+		knockback()
+
+
+func _on_AttackRight_body_entered(body):
+	if body.is_in_group("character"):
+		body.damage(ATTACK_DAMAGE)
+		knockback()
