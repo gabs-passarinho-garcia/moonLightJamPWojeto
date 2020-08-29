@@ -15,3 +15,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Area2D_body_exited(body):
+	if body.is_in_group("character"):
+		get_tree().change_scene("res://Scenes/menus/Game_over.tscn")
+	elif body.is_in_group("enemy"):
+		body.queue_free()
+	pass # Replace with function body.
