@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Aranha/Aranha andando.png" type="Texture" id=1]
 [ext_resource path="res://Spider.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Aranha/Aranha pulo.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Sound Design/Aranha 1.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Sound Design/Aranha 3.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sound Design/Passos (Caverna) 5.wav" type="AudioStream" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Spider.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 62.5195, 61.5018 )
+extents = Vector2( 62.2856, 56.0847 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 901.289
@@ -65,6 +66,20 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("AudioStreamPlayer2D3")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=4]
@@ -167,10 +182,10 @@ radius = 136.976
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.707108, -9.1924 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 position = Vector2( 4.24241, -3.72709 )
 rotation = 1.5708
 scale = Vector2( 0.104778, 0.224614 )
@@ -216,6 +231,7 @@ anims/parado = SubResource( 4 )
 anims/pulando = SubResource( 5 )
 
 [node name="Sprite2" type="Sprite" parent="."]
+visible = false
 position = Vector2( 3.21046, 19.1956 )
 scale = Vector2( 0.105657, 0.235971 )
 texture = ExtResource( 3 )
@@ -224,11 +240,13 @@ hframes = 5
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
-autoplay = true
 max_distance = 500.0
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_KnockbackTimer_timeout"]
