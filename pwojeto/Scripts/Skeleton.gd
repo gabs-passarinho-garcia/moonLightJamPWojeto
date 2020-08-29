@@ -90,7 +90,11 @@ func _on_KnockbackTimer_timeout():
 	is_jumping=false
 	
 func hit():
-	queue_free()
+	$AnimationPlayer.play("dying")
+	set_physics_process(false)
+	$AttackRange.visible=false
+	$Range.visible=false
+	$CollisionShape2D.disabled=true
 
 
 func _on_AttackRange_body_entered(body):
