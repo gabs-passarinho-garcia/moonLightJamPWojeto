@@ -10,14 +10,13 @@ var life=100
 var double_jump_cost=10
 var wall_jump_cost=5
 var has_wall_jump=true
+var melee_atack_cost = 1
 onready var espadaDir = $Espada
 onready var espadaEsq = $Espada2
 var direita = true
 func _ready():
-	if direita:
-		espadaDir.connect("body_entered",self,"atack")
-	else:
-		espadaEsq.connect("body_entered",self,"atack")
+	espadaDir.connect("body_entered",self,"atack")
+	espadaEsq.connect("body_entered",self,"atack")
 	set_physics_process(true)
 	pass # Replace with function body.
 
@@ -84,8 +83,8 @@ func damage(damage):
 		queue_free()
 		
 func atack(body):
-	if body.is_in_group("enemy"):
-		print("cheguei")
+	if (body.is_in_group("enemy")):
 		body.hit()
+		damage(melee_atack_cost)
 		pass
 	pass

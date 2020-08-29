@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/menus/pause_menu.tscn" type="PackedScene" id=2]
@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 43, 50.3809 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "golpeEspadaDireita"
 length = 0.4
 tracks/0/type = "value"
@@ -48,7 +48,7 @@ tracks/2/keys = {
 "values": [ 45.0, 55.0, 75.0, 85.0, 95.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "golpeEspadaEsquerda"
 length = 0.4
 tracks/0/type = "value"
@@ -88,7 +88,59 @@ tracks/2/keys = {
 "values": [ 315.0, 305.0, 295.0, 285.0, 275.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="Animation" id=6]
+resource_name = "parado"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Espada:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Espada2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Espada/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Espada2/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 6.44367, 37.4059 )
 
 [sub_resource type="RectangleShape2D" id=5]
@@ -124,16 +176,19 @@ one_shot = true
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/golpeEspadaDireita = SubResource( 3 )
-anims/golpeEspadaEsquerda = SubResource( 4 )
+autoplay = "parado"
+anims/golpeEspadaDireita = SubResource( 2 )
+anims/golpeEspadaEsquerda = SubResource( 3 )
+anims/parado = SubResource( 6 )
 
-[node name="Espada" type="Area2D" parent="."]
+[node name="Espada" type="Area2D" parent="." groups=[
+"weapon",
+]]
 position = Vector2( 61.0175, 5.1272 )
 rotation = 0.785398
-scale = Vector2( 1, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Espada"]
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -144,15 +199,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Espada2" type="Area2D" parent="."]
-visible = false
+[node name="Espada2" type="Area2D" parent="." groups=[
+"weapon",
+]]
 position = Vector2( -61.8802, -1.22958 )
-rotation = 4.79966
-scale = Vector2( 1, 1 )
+rotation = 5.49779
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Espada2"]
 shape = SubResource( 5 )
-disabled = true
 __meta__ = {
 "_edit_lock_": true
 }
