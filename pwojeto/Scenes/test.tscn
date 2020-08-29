@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/actors/player/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/actors/enemies/Skeleton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Tilemap/tileset1.tres" type="TileSet" id=3]
+[ext_resource path="res://Scenes/actors/enemies/Spider.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 999.985, 178.658 )
@@ -39,5 +40,5 @@ tile_set = ExtResource( 3 )
 cell_size = Vector2( 32, 32 )
 format = 1
 
-[node name="Skeleton" parent="." instance=ExtResource( 2 )]
-position = Vector2( 248.865, 283.994 )
+[node name="Spider" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1243.69, 420.504 )

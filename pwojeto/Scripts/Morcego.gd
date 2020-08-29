@@ -5,6 +5,13 @@ var SPEED=200
 var DAMAGE=25
 var knockback_speed=1000
 var following=false
+
+func _ready():
+	add_to_group("enemy")
+	set_physics_process(true)
+	#print("estou aqui")
+	
+	
 func _physics_process(delta):
 	if alvo!=null and following and $KnockbackTimer.is_stopped():
 		velocity=alvo.global_position-global_position
@@ -17,12 +24,14 @@ func _physics_process(delta):
 			if collision and collision.collider.is_in_group("character"):
 				collision.collider.damage(DAMAGE)
 				knockback()
-	if velocity.x<0 and $AnimatedSprite.flip_h==true:
-		$AnimatedSprite.flip_h=false
-	elif velocity.x>0 and $AnimatedSprite.flip_h==false:
-		$AnimatedSprite.flip_h=true
-	if alvo!=null and not following:
-		follow_checker()
+	if velocity.x<0 and $Sprite.flip_h==true:
+		$Sprite.flip_h=false
+		$AnimationPlayer.play("voando")
+	elif velocity.x>0 and $Sprite.flip_h==false:
+		$Sprite.flip_h=true
+		$AnimationPlayer.play("voando")
+	elif velocity.x == 0:
+		$AnimationPlayer.play("parado")
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character"):
@@ -41,6 +50,7 @@ func follow_checker():
 		following=true
 		$AnimationPlayer.play("walking")
 func hit():
+	print("cheguei")
 	queue_free()
 	
 func knockback():
