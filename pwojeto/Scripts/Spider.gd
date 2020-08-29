@@ -12,8 +12,9 @@ var KNOCKBACK_SPEED=1000
 var DAMAGE=30
 var following=false
 var not_jumped=true
+var esq = false
 func _ready():
-	pass
+	add_to_group("enemy")
 
 
 func _physics_process(delta):
@@ -22,13 +23,25 @@ func _physics_process(delta):
 
 			if(global_position<alvo.global_position):
 				velocity.x=SPEED
+				$Sprite.flip_h = true
+				$AnimationPlayer.play("andando")
+				esq = false
 			elif global_position>alvo.global_position:
+				$Sprite.flip_h = false
+				$AnimationPlayer.play("andando")
 				velocity.x=-SPEED
+				esq = true
 			else:
 				velocity.x=0
+				$AnimationPlayer.play("parado")
+			if is_on_floor():
+				$Sprite.rotation_degrees = 0
 			if is_on_wall():
-
 				velocity.y=-CLIMBSPEED
+				if esq:
+					$Sprite.rotation_degrees = 90
+				else:
+					$Sprite.rotation_degrees = -90
 			elif not is_on_floor():
 				velocity.y+=GRAVITY
 			if is_on_floor() and ((velocity.x<0 and  not $RayCastLeft.is_colliding() )or(velocity.x>0 and not $RayCastRight.is_colliding())):
@@ -66,6 +79,7 @@ func _on_Range_body_exited(body):
 func jump():
 	
 	$JumpTimer.start()
+	$AnimationPlayer.play("pulando")
 	is_jumping=true
 	if velocity.x>0:
 		velocity=Vector2(0,-1).rotated(JUMP_ANGLE)*JUMP_SPEED
