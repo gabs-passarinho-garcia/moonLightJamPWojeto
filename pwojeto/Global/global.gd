@@ -1,6 +1,7 @@
 extends Node
 
-
+var cena_atual = "res://Scenes/test.tscn"
+var life = 100
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

@@ -54,13 +54,14 @@ func _physics_process(delta):
 		for i in get_slide_count():
 			var collision=get_slide_collision(i)
 			if collision and (collision.collider.is_in_group("character") or collision.collider.is_in_group("weapon")) :
-				collision.collider.damage(DAMAGE)
+				collision.collider.damage(DAMAGE,true)
 				knockback()
 
 
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character"):
+		$AudioStreamPlayer2D.play()
 		$RayCast2D.set_cast_to(body.global_position-global_position)
 		$RayCast2D.force_raycast_update()
 		if $RayCast2D.get_collider()==body:

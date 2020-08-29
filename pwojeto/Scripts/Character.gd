@@ -18,6 +18,7 @@ func _ready():
 	espadaDir.connect("body_entered",self,"atack")
 	espadaEsq.connect("body_entered",self,"atack")
 	set_physics_process(true)
+	life = Global.life
 	pass # Replace with function body.
 
 func _physics_process(delta):
@@ -77,9 +78,13 @@ func wall_jump():
 		damage(wall_jump_cost)
 		has_wall_jump=false
 		$Sprite.flip_h=(not $Sprite.flip_h)
-func damage(damage):
+func damage(damage, attack = false):
+	if attack:
+		$AudioStreamPlayer2D2.play()
 	life-=damage
 	if life<0:
+		$MorteSom.play()
+		get_tree().change_scene("res://Scenes/menus/Game_over.tscn")
 		queue_free()
 		
 func atack(body):
