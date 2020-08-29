@@ -83,6 +83,7 @@ func damage(damage, attack = false):
 		$AudioStreamPlayer2D2.play()
 	life-=damage
 	if life<0:
+		$MorteSom.play()
 		get_tree().change_scene("res://Scenes/menus/Game_over.tscn")
 		queue_free()
 		

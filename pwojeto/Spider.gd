@@ -61,6 +61,7 @@ func _physics_process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character"):
+		$AudioStreamPlayer2D.play()
 		$RayCast2D.set_cast_to(body.global_position-global_position)
 		$RayCast2D.force_raycast_update()
 		if $RayCast2D.get_collider()==body:
