@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Morcego 3.wav-d2753e62e9ceebffc49f8e6be1a1909f.sample"
+
+[deps]
+
+source_file="res://Assets/Sound Design/Morcego 3.wav"
+dest_files=[ "res://.import/Morcego 3.wav-d2753e62e9ceebffc49f8e6be1a1909f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

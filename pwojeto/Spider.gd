@@ -54,7 +54,7 @@ func _physics_process(delta):
 		for i in get_slide_count():
 			var collision=get_slide_collision(i)
 			if collision and (collision.collider.is_in_group("character") or collision.collider.is_in_group("weapon")) :
-				collision.collider.damage(DAMAGE)
+				collision.collider.damage(DAMAGE,true)
 				knockback()
 
 

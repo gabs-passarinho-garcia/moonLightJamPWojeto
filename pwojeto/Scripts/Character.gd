@@ -77,7 +77,9 @@ func wall_jump():
 		damage(wall_jump_cost)
 		has_wall_jump=false
 		$Sprite.flip_h=(not $Sprite.flip_h)
-func damage(damage):
+func damage(damage, attack = false):
+	if attack:
+		$AudioStreamPlayer2D2.play()
 	life-=damage
 	if life<0:
 		queue_free()

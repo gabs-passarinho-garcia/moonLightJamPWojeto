@@ -19,7 +19,7 @@ func _physics_process(delta):
 		velocity=Vector2(0,0)
 	var collision=move_and_collide(velocity*delta)
 	if collision and (collision.collider.is_in_group("character") or collision.collider.is_in_group("weapon")):
-		collision.collider.damage(DAMAGE)
+		collision.collider.damage(DAMAGE, true)
 		knockback()
 	if velocity.x<0 and $Sprite.flip_h==true:
 		$Sprite.flip_h=false
