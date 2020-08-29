@@ -18,6 +18,7 @@ func _ready():
 	espadaDir.connect("body_entered",self,"atack")
 	espadaEsq.connect("body_entered",self,"atack")
 	set_physics_process(true)
+	life = Global.life
 	pass # Replace with function body.
 
 func _physics_process(delta):
@@ -82,6 +83,7 @@ func damage(damage, attack = false):
 		$AudioStreamPlayer2D2.play()
 	life-=damage
 	if life<0:
+		get_tree().change_scene("res://Scenes/menus/Game_over.tscn")
 		queue_free()
 		
 func atack(body):
