@@ -928,6 +928,10 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Pause_menu" parent="CanvasLayer" instance=ExtResource( 2 )]
+margin_left = 60.5447
+margin_top = 20.1815
+margin_right = 100.545
+margin_bottom = 60.1815
 
 [node name="wall_jump" type="Sprite" parent="." groups=[
 "characterSprite",
