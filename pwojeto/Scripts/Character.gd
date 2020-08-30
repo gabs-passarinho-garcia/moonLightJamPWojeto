@@ -13,6 +13,8 @@ var has_wall_jump=true
 var melee_atack_cost = 1
 onready var espadaDir = $Espada
 onready var espadaEsq = $Espada2
+var ataque = false
+var pulando = false
 var direita = true
 func _ready():
 	espadaDir.connect("body_entered",self,"atack")
@@ -28,6 +30,7 @@ func _physics_process(delta):
 		get_tree().paused = true
 		pass
 	if Input.is_action_pressed("melee_atack"):
+		ataque = true
 		if direita:
 			$AnimationPlayer.play("golpeEspadaDireita")
 		else:
@@ -35,21 +38,28 @@ func _physics_process(delta):
 		pass
 	if Input.is_action_pressed("left") and $WallJumpTimer.is_stopped():
 		velocity.x=-SPEED
-		if $Sprite.flip_h==false:
-			$Sprite.flip_h=true
+		if direita == true:
+			for i in get_tree().get_nodes_in_group("characterSprite"):
+				i.flip_h = true
+		$AnimationPlayer.play("andando")
 			#$Espada/Sprite.flip_h = true
 		direita = false
 	elif Input.is_action_pressed("right" ) and $WallJumpTimer.is_stopped():
 		velocity.x=SPEED
-		if $Sprite.flip_h==true:
-			$Sprite.flip_h=false
+		if direita == false:
+			for i in get_tree().get_nodes_in_group("characterSprite"):
+				i.flip_h = false
+		$AnimationPlayer.play("andando")
 			#$Espada/Sprite.flip_h = false
 		direita = true
 	elif $WallJumpTimer.is_stopped():
 		velocity.x=0
+		if not ataque and not pulando:
+			$AnimationPlayer.play("parado")
 	if Input.is_action_just_pressed("jump") :
 		if is_on_floor():
-		
+			$AnimationPlayer.play("pulo")
+			pulando = true
 			velocity.y=-JUMPSPEED
 		elif is_on_wall():
 			wall_jump()
@@ -68,6 +78,8 @@ func _physics_process(delta):
 func double_jump():
 	velocity.y=-JUMPSPEED
 	has_double_jump=false
+	$AnimationPlayer.play("pulo")
+	pulando = true
 	damage(double_jump_cost)
 
 func wall_jump():
@@ -93,3 +105,14 @@ func atack(body):
 		damage(melee_atack_cost)
 		pass
 	pass
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	print(anim_name)
+	if anim_name == "golpeEspadaDireita" or anim_name == "golpeEspadaEsquerda":
+		ataque = false
+		pass
+	elif anim_name == "pulo":
+		pulando = false
+		pass
+	pass # Replace with function body.
