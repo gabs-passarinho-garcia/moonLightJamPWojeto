@@ -15,7 +15,6 @@ extents = Vector2( 55432.8, 11576.3 )
 script = ExtResource( 1 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-editor/display_folded = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 1920, 1080 )
@@ -69,5 +68,4 @@ position = Vector2( 5802.48, 1136.36 )
 
 [node name="Spider3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 6335.21, 1131.02 )
-
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
