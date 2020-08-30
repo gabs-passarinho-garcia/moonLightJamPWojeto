@@ -23,4 +23,16 @@ func change_life(new_life):
 		$MarginContainer/Node2D/LifeBar.value, new_life, 1,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		
-
+func catch_item( item_name):
+	if item_name=="cordao":
+		coletados[0][0]=true
+	elif item_name=="teia":
+		coletados[1][0]=true
+	elif item_name=="pedra":
+		coletados[0][1]=true
+	elif item_name=="madeira":
+		coletados[1][1]=true
+	elif item_name=="medalhao":
+		coletados[0][2]=true
+	elif item_name=="ponta":
+		coletados[1][2]=true
