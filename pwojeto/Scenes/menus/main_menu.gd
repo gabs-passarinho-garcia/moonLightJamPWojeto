@@ -20,5 +20,5 @@ func on_quit_down():
 	get_tree().quit()
 	pass
 func on_load_down():
-	#Global.game_load()
+	Global.game_load()
 	pass

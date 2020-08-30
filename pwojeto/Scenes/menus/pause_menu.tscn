@@ -11,7 +11,6 @@ font_data = ExtResource( 4 )
 
 [node name="Pause_menu" type="Popup"]
 pause_mode = 2
-visible = true
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )

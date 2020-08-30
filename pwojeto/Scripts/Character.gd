@@ -113,6 +113,7 @@ func damage(damage, attack = false):
 	life-=damage
 	if life<0:
 		$MorteSom.play()
+		print("por algum motivo, estou aqui")
 		get_tree().change_scene("res://Scenes/menus/Game_over.tscn")
 		queue_free()
 		
