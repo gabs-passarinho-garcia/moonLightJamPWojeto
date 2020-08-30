@@ -24,10 +24,12 @@ func _physics_process(delta):
 			if(global_position<alvo.global_position):
 				velocity.x=SPEED
 				$Sprite.flip_h = true
+				$Sprite2.flip_h =true
 				$AnimationPlayer.play("andando")
 				esq = false
 			elif global_position>alvo.global_position:
 				$Sprite.flip_h = false
+				$Sprite2.flip_h =false
 				$AnimationPlayer.play("andando")
 				velocity.x=-SPEED
 				esq = true

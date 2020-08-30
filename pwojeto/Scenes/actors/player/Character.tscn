@@ -143,7 +143,7 @@ tracks/9/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=3]
 resource_name = "dano"
 step = 0.0416667
 tracks/0/type = "value"
@@ -269,7 +269,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 step = 0.0416667
 tracks/0/type = "value"
 tracks/0/path = NodePath("Espada:visible")
@@ -406,8 +406,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "golpeEspadaEsquerda"
+[sub_resource type="Animation" id=5]
 step = 0.0416667
 tracks/0/type = "value"
 tracks/0/path = NodePath("Espada/CollisionShape2D:disabled")
@@ -544,7 +543,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 loop = true
 step = 0.0416667
 tracks/0/type = "value"
@@ -656,7 +655,7 @@ tracks/8/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "pulo"
 step = 0.0416667
 tracks/0/type = "value"
@@ -768,7 +767,7 @@ tracks/8/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "puloParede"
 step = 0.0416667
 tracks/0/type = "value"
@@ -880,10 +879,10 @@ tracks/8/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 6.44367, 25.8724 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 6.44367, 31.1267 )
 
 [node name="Character" type="KinematicBody2D" groups=[
@@ -900,7 +899,6 @@ limit_bottom = 100000
 [node name="Parado" type="Sprite" parent="." groups=[
 "characterSprite",
 ]]
-visible = false
 scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 4 )
 vframes = 5
@@ -917,7 +915,6 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Pause_menu" parent="CanvasLayer" instance=ExtResource( 2 )]
-visible = false
 
 [node name="wall_jump" type="Sprite" parent="." groups=[
 "characterSprite",
@@ -932,12 +929,12 @@ hframes = 5
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "parado"
 anims/andando = SubResource( 2 )
-anims/dano = SubResource( 10 )
-anims/golpeEspadaDireita = SubResource( 3 )
-anims/golpeEspadaEsquerda = SubResource( 4 )
-anims/parado = SubResource( 5 )
-anims/pulo = SubResource( 8 )
-anims/puloParede = SubResource( 9 )
+anims/dano = SubResource( 3 )
+anims/golpeEspadaDireita = SubResource( 4 )
+anims/golpeEspadaEsquerda = SubResource( 5 )
+anims/parado = SubResource( 6 )
+anims/pulo = SubResource( 7 )
+anims/puloParede = SubResource( 8 )
 
 [node name="Espada" type="Area2D" parent="." groups=[
 "weapon",
@@ -946,7 +943,7 @@ position = Vector2( 59.8282, -31.7382 )
 rotation = 1.06706
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Espada"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 disabled = true
 __meta__ = {
 "_edit_lock_": true
@@ -969,7 +966,7 @@ position = Vector2( -45.2313, -28.5813 )
 rotation = 5.25372
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Espada2"]
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 disabled = true
 __meta__ = {
 "_edit_lock_": true
@@ -1008,6 +1005,7 @@ vframes = 5
 hframes = 5
 
 [node name="dano" type="Sprite" parent="."]
+visible = false
 position = Vector2( 6, 0 )
 scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 12 )
