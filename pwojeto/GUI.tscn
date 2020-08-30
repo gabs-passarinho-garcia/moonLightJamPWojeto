@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/healthbar-correcao.png" type="Texture" id=1]
 [ext_resource path="res://Assets/UI/healthbar.png" type="Texture" id=2]
 [ext_resource path="res://Assets/UI/item-slot.png" type="Texture" id=3]
 [ext_resource path="res://GUI.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Itens/bota-retoques.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Itens/ponta.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Itens/madeira.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Itens/espada/espada.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Itens/pedra-aja.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Itens/teia.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Itens/cordao.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Itens/amuleto-parte-metalica-dourada.png" type="Texture" id=12]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -23,29 +31,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-margin_right = 1867.0
-margin_bottom = 330.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Node2D" type="Node2D" parent="MarginContainer"]
+scale = Vector2( 3, 3 )
 
-[node name="Node2D" type="Node2D" parent="MarginContainer/HBoxContainer"]
-scale = Vector2( 2, 2 )
-
-[node name="LifeBar" type="TextureProgress" parent="MarginContainer/HBoxContainer/Node2D"]
-margin_right = 256.0
-margin_bottom = 64.0
-value = 50.0
+[node name="LifeBar" type="TextureProgress" parent="MarginContainer/Node2D"]
+margin_top = -1.0
+margin_right = 512.0
+margin_bottom = 127.0
+value = 100.0
 texture_under = ExtResource( 2 )
+texture_over = ExtResource( 2 )
 texture_progress = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D2" type="Node2D" parent="MarginContainer/HBoxContainer"]
+[node name="Node2D2" type="Node2D" parent="MarginContainer"]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Node2D2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Node2D2"]
 margin_left = 1425.0
 margin_top = -2.0
 margin_right = 1809.0
@@ -54,7 +57,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Node2D2/HBoxContainer"]
 margin_right = 125.0
 margin_bottom = 256.0
 size_flags_horizontal = 3
@@ -63,34 +66,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer"]
 margin_right = 125.0
 margin_bottom = 126.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_right = 125.0
 margin_bottom = 126.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 3 )
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer/VBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer"]
 margin_top = 130.0
 margin_right = 125.0
 margin_bottom = 256.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer/HBoxContainer2"]
 margin_right = 125.0
 margin_bottom = 126.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 3 )
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer/HBoxContainer2/NinePatchRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Node2D2/HBoxContainer"]
 margin_left = 129.0
 margin_right = 254.0
 margin_bottom = 256.0
@@ -100,63 +129,188 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer2"]
 margin_right = 125.0
 margin_bottom = 126.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer2/HBoxContainer"]
 margin_right = 125.0
 margin_bottom = 126.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 3 )
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer/VBoxContainer2"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer2/HBoxContainer/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer2/HBoxContainer/NinePatchRect/NinePatchRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture = ExtResource( 9 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer2"]
 margin_top = 130.0
 margin_right = 125.0
 margin_bottom = 256.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer2/HBoxContainer2"]
 margin_right = 125.0
 margin_bottom = 126.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 3 )
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer2/HBoxContainer2/NinePatchRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/Node2D2/HBoxContainer"]
 margin_left = 258.0
 margin_right = 384.0
 margin_bottom = 256.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer/VBoxContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer3"]
 margin_right = 126.0
 margin_bottom = 126.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer/VBoxContainer3/HBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer3/HBoxContainer"]
 margin_right = 126.0
 margin_bottom = 126.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 3 )
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer/VBoxContainer3"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer3/HBoxContainer/NinePatchRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer3"]
 margin_top = 130.0
 margin_right = 126.0
 margin_bottom = 256.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/Node2D2/HBoxContainer/VBoxContainer3/HBoxContainer2"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer3/HBoxContainer2"]
 margin_right = 126.0
 margin_bottom = 126.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 3 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D2/HBoxContainer/VBoxContainer3/HBoxContainer2/NinePatchRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D3" type="Node2D" parent="MarginContainer"]
+position = Vector2( 5.75967, 971.428 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Node2D3"]
+margin_left = 10.0
+margin_top = -80.0
+margin_right = 266.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Node2D3/HBoxContainer"]
+margin_right = 126.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D3/HBoxContainer/VBoxContainer"]
+margin_right = 126.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D3/HBoxContainer/VBoxContainer/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture = ExtResource( 8 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Node2D3/HBoxContainer"]
+margin_left = 130.0
+margin_right = 256.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D3/HBoxContainer/VBoxContainer2"]
+margin_right = 126.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Node2D3/HBoxContainer/VBoxContainer2/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
