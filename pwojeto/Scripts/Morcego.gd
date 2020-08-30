@@ -4,6 +4,7 @@ var velocity=Vector2(0,0)
 var SPEED=200
 var DAMAGE=25
 var knockback_speed=1000
+var following=false
 
 func _ready():
 	add_to_group("enemy")
@@ -12,15 +13,17 @@ func _ready():
 	
 	
 func _physics_process(delta):
-	if alvo!=null and $KnockbackTimer.is_stopped():
+	if alvo!=null and following and $KnockbackTimer.is_stopped():
 		velocity=alvo.global_position-global_position
 		velocity=velocity.normalized()*SPEED
 	elif $KnockbackTimer.is_stopped():
 		velocity=Vector2(0,0)
-	var collision=move_and_collide(velocity*delta)
-	if collision and (collision.collider.is_in_group("character") or collision.collider.is_in_group("weapon")):
-		collision.collider.damage(DAMAGE, true)
-		knockback()
+	velocity=move_and_slide(velocity)
+	for i in get_slide_count():
+			var collision=get_slide_collision(i)
+			if collision and collision.collider.is_in_group("character"):
+				collision.collider.damage(DAMAGE)
+				knockback()
 	if velocity.x<0 and $Sprite.flip_h==true:
 		$Sprite.flip_h=false
 		$AnimationPlayer.play("voando")
@@ -41,7 +44,12 @@ func _on_Area2D_body_entered(body):
 func _on_Range_body_exited(body):
 	if body.is_in_group("character"):
 		alvo=null
-
+func follow_checker():
+	$RayCast2D.set_cast_to(alvo.global_position-global_position)
+	$RayCast2D.force_raycast_update()
+	if $RayCast2D.get_collider()==alvo:
+		following=true
+		$AnimationPlayer.play("walking")
 func hit():
 	print("cheguei")
 	queue_free()
