@@ -32,7 +32,8 @@ func _physics_process(delta):
 		$AnimationPlayer.play("voando")
 	elif velocity.x == 0:
 		$AnimationPlayer.play("parado")
-
+	if alvo!=null and not following:
+		follow_checker()
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character"):
 		$AudioStreamPlayer2D2.play()
@@ -49,10 +50,10 @@ func follow_checker():
 	$RayCast2D.force_raycast_update()
 	if $RayCast2D.get_collider()==alvo:
 		following=true
-		$AnimationPlayer.play("walking")
+		$AnimationPlayer.play("voando")
 func hit():
-	print("cheguei")
 	queue_free()
+
 	
 func knockback():
 	velocity*=-1
