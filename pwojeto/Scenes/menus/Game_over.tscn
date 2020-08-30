@@ -25,12 +25,15 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 4 )
 centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Label" type="Label" parent="."]
-margin_left = 272.643
-margin_top = -50.8776
-margin_right = 1593.64
-margin_bottom = 538.122
+margin_left = -7.35699
+margin_top = -46.8776
+margin_right = 1313.64
+margin_bottom = 542.122
 custom_fonts/font = SubResource( 1 )
 text = "Você morreu."
 align = 1
@@ -41,48 +44,53 @@ __meta__ = {
 }
 
 [node name="Retornar_fase" type="TextureButton" parent="."]
-margin_left = 684.0
-margin_top = 436.0
-margin_right = 1027.0
-margin_bottom = 560.0
-texture_normal = ExtResource( 3 )
-texture_hover = ExtResource( 5 )
-
-[node name="Menu_principal" type="TextureButton" parent="."]
-margin_left = 681.858
-margin_top = 732.858
-margin_right = 1024.86
-margin_bottom = 856.858
+margin_left = 460.0
+margin_top = 448.0
+margin_right = 803.0
+margin_bottom = 572.0
 texture_normal = ExtResource( 3 )
 texture_hover = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="."]
-margin_left = 672.397
-margin_top = 404.799
-margin_right = 1025.4
-margin_bottom = 602.799
+[node name="Label2" type="Label" parent="Retornar_fase"]
+margin_left = -11.603
+margin_top = -31.201
+margin_right = 341.4
+margin_bottom = 166.799
 custom_fonts/font = SubResource( 2 )
 text = "Tente novamente"
 align = 1
 valign = 1
 uppercase = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="."]
-margin_left = 678.054
-margin_top = 698.955
-margin_right = 1031.05
-margin_bottom = 896.955
+[node name="Menu_principal" type="TextureButton" parent="."]
+margin_left = 457.858
+margin_top = 744.858
+margin_right = 800.86
+margin_bottom = 868.858
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Menu_principal"]
+margin_left = -3.80396
+margin_top = -33.903
+margin_right = 349.192
+margin_bottom = 164.097
 custom_fonts/font = SubResource( 3 )
 text = "Voltar ao menu principal"
 align = 1
 valign = 1
 uppercase = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
