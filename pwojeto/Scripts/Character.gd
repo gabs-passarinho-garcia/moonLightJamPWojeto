@@ -13,6 +13,10 @@ var has_wall_jump=true
 var melee_atack_cost = 1
 onready var espadaDir = $Espada
 onready var espadaEsq = $Espada2
+var ataque = false
+var pulando = false
+var pParade = false
+var dano = false
 var direita = true
 func _ready():
 	espadaDir.connect("body_entered",self,"atack")
@@ -28,6 +32,7 @@ func _physics_process(delta):
 		get_tree().paused = true
 		pass
 	if Input.is_action_pressed("melee_atack"):
+		ataque = true
 		if direita:
 			$AnimationPlayer.play("golpeEspadaDireita")
 		else:
@@ -35,21 +40,34 @@ func _physics_process(delta):
 		pass
 	if Input.is_action_pressed("left") and $WallJumpTimer.is_stopped():
 		velocity.x=-SPEED
-		if $Sprite.flip_h==false:
-			$Sprite.flip_h=true
+		if direita == true:
+			for i in get_tree().get_nodes_in_group("characterSprite"):
+				i.flip_h = true
+			$wall_jump.position.x = -4
+		if is_on_floor():
+			if (not ataque) and (not pulando) and (not pParade) and (not dano):
+				$AnimationPlayer.play("andando")
 			#$Espada/Sprite.flip_h = true
 		direita = false
 	elif Input.is_action_pressed("right" ) and $WallJumpTimer.is_stopped():
 		velocity.x=SPEED
-		if $Sprite.flip_h==true:
-			$Sprite.flip_h=false
+		if direita == false:
+			for i in get_tree().get_nodes_in_group("characterSprite"):
+				i.flip_h = false
+			$wall_jump.position.x = 12
+		if is_on_floor():
+			if (not ataque) and (not pulando) and (not pParade) and (not dano):
+				$AnimationPlayer.play("andando")
 			#$Espada/Sprite.flip_h = false
 		direita = true
 	elif $WallJumpTimer.is_stopped():
 		velocity.x=0
+		if (not ataque) and (not pulando) and (not pParade) and (not dano):
+			$AnimationPlayer.play("parado")
 	if Input.is_action_just_pressed("jump") :
 		if is_on_floor():
-		
+			$AnimationPlayer.play("pulo")
+			pulando = true
 			velocity.y=-JUMPSPEED
 		elif is_on_wall():
 			wall_jump()
@@ -68,6 +86,8 @@ func _physics_process(delta):
 func double_jump():
 	velocity.y=-JUMPSPEED
 	has_double_jump=false
+	$AnimationPlayer.play("pulo")
+	pulando = true
 	damage(double_jump_cost)
 
 func wall_jump():
@@ -77,10 +97,19 @@ func wall_jump():
 		$WallJumpTimer.start()
 		damage(wall_jump_cost)
 		has_wall_jump=false
-		$Sprite.flip_h=(not $Sprite.flip_h)
+		pParade = true
+		$AnimationPlayer.play("puloParede")
+		for i in get_tree().get_nodes_in_group("characterSprite"):
+			i.flip_h = (not i.flip_h)
+		direita = not direita
+		if $wall_jump.position.x == -4:
+			$wall_jump.position.x = 12
+		else:
+			$wall_jump.position.x = -4
+			pass
 func damage(damage, attack = false):
 	if attack:
-		$AudioStreamPlayer2D2.play()
+		$AnimationPlayer.play("dano")
 	life-=damage
 	if life<0:
 		$MorteSom.play()
@@ -93,3 +122,11 @@ func atack(body):
 		damage(melee_atack_cost)
 		pass
 	pass
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	ataque = false
+	pulando = false
+	pParade = false
+	dano = false
+	pass # Replace with function body.
