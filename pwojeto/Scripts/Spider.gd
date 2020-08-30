@@ -98,10 +98,21 @@ func _on_KnockbackTimer_timeout():
 	is_jumping=false
 	
 func hit():
-	queue_free()
+	$AnimationPlayer.play("dying")
+	set_physics_process(false)
+	$AttackRange.visible=false
+	$Range.visible=false
+	$CollisionShape2D.disabled=true
+
 
 
 func _on_JumpRange_body_entered(body):
 	if body.is_in_group("character") and not_jumped:
 		jump()
 		not_jumped=false
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name=="dying":
+		queue_free()
+	
