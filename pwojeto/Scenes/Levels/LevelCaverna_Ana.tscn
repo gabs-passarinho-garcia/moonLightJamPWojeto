@@ -71,13 +71,11 @@ position = Vector2( 5802.48, 1136.36 )
 [node name="Spider3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 6335.21, 1131.02 )
 
-[node name="ambiencia" type="AudioStreamPlayer2D" parent="."]
+[node name="ambiencia" type="AudioStreamPlayer" parent="."]
 pause_mode = 1
 stream = ExtResource( 8 )
-max_distance = 20000.0
 
-[node name="musica" type="AudioStreamPlayer2D" parent="."]
+[node name="musica" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 autoplay = true
-max_distance = 20000.0
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

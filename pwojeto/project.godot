@@ -17,12 +17,16 @@ _global_script_class_icons={
 
 config/name="The hunter and the fox"
 run/main_scene="res://Scenes/menus/main_menu.tscn"
-run/disable_stdout=true
-config/icon="res://icon.png"
+config/icon="res://Assets/icone/raposa_espada_final_eyeless.png"
+config/windows_native_icon="res://Assets/icone/raposa_espada_final_eyeless_Zpi_icon.ico"
 
 [autoload]
 
 Global="*res://Global/global.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
 
 [display]
 

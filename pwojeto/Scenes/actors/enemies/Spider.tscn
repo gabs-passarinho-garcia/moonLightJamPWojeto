@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/Aranha/Aranha morte.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 85.3468, 41.1053 )
+extents = Vector2( 76.5653, 35.9314 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 901.289
@@ -284,12 +284,12 @@ position = Vector2( 4.43469, -6.06861 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 position = Vector2( 4.24241, -3.72709 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 1 )
 vframes = 5
 hframes = 5
+frame = 6
 
 [node name="Range" type="Area2D" parent="."]
 
@@ -328,6 +328,7 @@ anims/parado = SubResource( 6 )
 anims/pulando = SubResource( 7 )
 
 [node name="Sprite2" type="Sprite" parent="."]
+visible = false
 position = Vector2( 3.21046, 19.1956 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 3 )
@@ -351,6 +352,7 @@ scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 7 )
 vframes = 5
 hframes = 5
+frame = 5
 [connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_KnockbackTimer_timeout"]

@@ -246,6 +246,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=8]
 length = 1.2
@@ -315,7 +327,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 23.7604, 18.272 )
+extents = Vector2( 11.0352, 27.5172 )
 
 [node name="Skeleton" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -325,6 +337,7 @@ position = Vector2( 0.735077, 7.35089 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 7.95633, 5.78472 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 2 )
@@ -356,7 +369,6 @@ anims/dying = SubResource( 7 )
 anims/walking = SubResource( 8 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-visible = false
 position = Vector2( -24.7085, 6.46422 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 3 )
@@ -367,14 +379,16 @@ hframes = 5
 position = Vector2( -1.90735e-06, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackLeft"]
-position = Vector2( -51.3768, -22.5921 )
+position = Vector2( -29.3706, 2.05482 )
 shape = SubResource( 9 )
+disabled = true
 
 [node name="AttackRight" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRight"]
-position = Vector2( 54.7686, -17.8129 )
+position = Vector2( 30.4143, 4.10467 )
 shape = SubResource( 9 )
+disabled = true
 
 [node name="Sprite3" type="Sprite" parent="."]
 visible = false
@@ -383,6 +397,7 @@ scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 4 )
 vframes = 5
 hframes = 5
+frame = 5
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 [connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]

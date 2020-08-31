@@ -16,6 +16,7 @@ var DAMAGE=30
 var ATTACK_DAMAGE=50
 var following=false
 var not_jumped=true
+var toma_dano = false
 func _ready():
 	add_to_group("enemy")
 	pass
@@ -51,8 +52,10 @@ func _physics_process(delta):
 		velocity=move_and_slide(velocity,Vector2(0,-1))
 		for i in get_slide_count():
 			var collision=get_slide_collision(i)
-			if collision and collision.collider.is_in_group("character"):
-				collision.collider.damage(DAMAGE)
+			if collision and collision.collider.is_in_group("weapon"):
+				toma_dano = true
+			elif collision and collision.collider.is_in_group("character") and (not toma_dano):
+				collision.collider.damage(DAMAGE,true)
 				knockback()
 	elif alvo!=null:
 		follow_checker()
@@ -95,7 +98,6 @@ func hit():
 	set_physics_process(false)
 	$AttackRange.visible=false
 	$Range.visible=false
-	$CollisionShape2D.disabled=true
 
 
 func _on_AttackRange_body_entered(body):
