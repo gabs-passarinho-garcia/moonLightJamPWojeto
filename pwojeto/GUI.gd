@@ -19,10 +19,8 @@ func _process(delta):
 		$MarginContainer/Node2D2/HBoxContainer/VBoxContainer3/HBoxContainer2/NinePatchRect/NinePatchRect.visible=true
 	
 func change_life(new_life):
-	$Tween.interpolate_property($MarginContainer/Node2D/LifeBar, "value",
-		$MarginContainer/Node2D/LifeBar.value, new_life, 1,
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		
+#	$Tween.interpolate_property($MarginContainer/Node2D/LifeBar, "value",$MarginContainer/Node2D/LifeBar.value, new_life, 1,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$MarginContainer/Node2D/LifeBar.value=new_life
 func catch_item( item_name):
 	if item_name=="cordao":
 		coletados[0][0]=true
