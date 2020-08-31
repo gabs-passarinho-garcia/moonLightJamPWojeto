@@ -7,6 +7,7 @@ var JUMPSPEED=600
 var velocity=Vector2()
 var has_double_jump=true
 var life=100
+var itens = []
 var double_jump_cost=10
 var wall_jump_cost=5
 var has_wall_jump=true
@@ -23,6 +24,7 @@ func _ready():
 	espadaEsq.connect("body_entered",self,"atack")
 	set_physics_process(true)
 	life = Global.life
+	itens = Global.itens
 	pass # Replace with function body.
 
 func _physics_process(delta):
@@ -133,3 +135,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	pParade = false
 	dano = false
 	pass # Replace with function body.
+
+func get_Item(item):
+	if not (item in itens):
+		itens.append(item)
+		pass
+	pass
