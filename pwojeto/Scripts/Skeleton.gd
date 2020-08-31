@@ -17,6 +17,7 @@ var ATTACK_DAMAGE=50
 var following=false
 var not_jumped=true
 func _ready():
+	add_to_group("enemy")
 	pass
 
 
