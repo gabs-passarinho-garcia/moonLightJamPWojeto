@@ -102,7 +102,7 @@ func _on_KnockbackTimer_timeout():
 func hit():
 	$AnimationPlayer.play("dying")
 	set_physics_process(false)
-	#$AttackRange.visible=false
+	$JumpRange.visible=false
 	$Range.visible=false
 	$CollisionShape2D.disabled=true
 

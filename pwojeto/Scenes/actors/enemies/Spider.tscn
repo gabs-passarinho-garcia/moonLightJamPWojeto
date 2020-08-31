@@ -279,7 +279,6 @@ vframes = 5
 hframes = 5
 
 [node name="Range" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
 position = Vector2( 0.647079, 1.61767 )
@@ -304,7 +303,6 @@ wait_time = 0.15
 one_shot = true
 
 [node name="JumpRange" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpRange"]
 shape = SubResource( 3 )

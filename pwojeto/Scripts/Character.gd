@@ -111,6 +111,7 @@ func damage(damage, attack = false):
 	if attack:
 		$AnimationPlayer.play("dano")
 	life-=damage
+	get_parent().get_node("CanvasLayer/Control").change_life(life)
 	if life<0:
 		$MorteSom.play()
 		print("por algum motivo, estou aqui")

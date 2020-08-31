@@ -17,8 +17,7 @@ _global_script_class_icons={
 
 config/name="PWOjeto"
 run/main_scene="res://Scenes/menus/main_menu.tscn"
-config/icon="res://Assets/icone/raposa_espada_final_eyeless.png"
-config/windows_native_icon="res://Assets/icone/raposa_espada_final_eyeless_Zpi_icon.ico"
+config/icon="res://icon.png"
 
 [autoload]
 
