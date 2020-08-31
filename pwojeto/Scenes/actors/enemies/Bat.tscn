@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Scripts/Morcego.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Morcego/batspritesheet.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sound Design/Morcego (Asa).wav" type="AudioStream" id=3]
-[ext_resource path="res://Assets/Sound Design/Morcego 1.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sounds/Sound Design/Morcego (Asa).wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/Sound Design/Morcego 1.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 67.8006, 66.8752 )
@@ -53,7 +53,7 @@ tracks/1/keys = {
 "clips": [ {
 "end_offset": 0.301227,
 "start_offset": 0.0,
-"stream": ExtResource( 3 )
+"stream": null
 } ],
 "times": PoolRealArray( 0 )
 }
