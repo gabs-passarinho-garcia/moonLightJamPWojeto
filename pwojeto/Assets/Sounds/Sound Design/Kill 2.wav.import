@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Kill 2.wav-9753a8ee0d250f30c4173ab09fb105c8.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Sound Design/Kill 2.wav"
+dest_files=[ "res://.import/Kill 2.wav-9753a8ee0d250f30c4173ab09fb105c8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

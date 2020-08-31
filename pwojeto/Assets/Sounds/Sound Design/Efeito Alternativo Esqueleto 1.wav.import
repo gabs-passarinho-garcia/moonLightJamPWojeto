@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Efeito Alternativo Esqueleto 1.wav-c9e6f5f7a38b238660d5aae441c02b7b.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Sound Design/Efeito Alternativo Esqueleto 1.wav"
+dest_files=[ "res://.import/Efeito Alternativo Esqueleto 1.wav-c9e6f5f7a38b238660d5aae441c02b7b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

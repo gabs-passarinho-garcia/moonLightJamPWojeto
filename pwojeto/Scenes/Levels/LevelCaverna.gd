@@ -8,7 +8,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Global.cena_atual = "res://Scenes/Levels/LevelCaverna.tscn"
+	Global.cena_atual = "res://Scenes/Levels/LevelCaverna_Ana.tscn"
 	pass # Replace with function body.
 
 

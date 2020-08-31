@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Prado Verde.ogg-abf1f6c97653aedd0b88db0945b1cbbe.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Trilha sonora/Prado Verde.ogg"
+dest_files=[ "res://.import/Prado Verde.ogg-abf1f6c97653aedd0b88db0945b1cbbe.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/menus/pause_menu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/botoes/base-botao.png" type="Texture" id=2]
 [ext_resource path="res://Assets/botoes/base-botao-hover.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Fonts/Hitch-hike.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/background/tela-pause.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -11,6 +12,7 @@ font_data = ExtResource( 4 )
 
 [node name="Pause_menu" type="Popup"]
 pause_mode = 2
+visible = true
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
@@ -18,86 +20,109 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Continue" type="TextureButton" parent="."]
-margin_left = 811.72
-margin_top = 154.529
-margin_right = 1154.72
-margin_bottom = 278.529
+margin_left = 1347.72
+margin_top = 118.529
+margin_right = 1690.72
+margin_bottom = 242.529
 texture_normal = ExtResource( 2 )
 texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Salvar" type="TextureButton" parent="."]
-margin_left = 809.524
-margin_top = 381.476
-margin_right = 1152.52
-margin_bottom = 505.476
-texture_normal = ExtResource( 2 )
-texture_hover = ExtResource( 3 )
-
-[node name="VoltarMenu" type="TextureButton" parent="."]
-margin_left = 816.091
-margin_top = 615.004
-margin_right = 1159.09
-margin_bottom = 739.004
-texture_normal = ExtResource( 2 )
-texture_hover = ExtResource( 3 )
-
-[node name="Sair" type="TextureButton" parent="."]
-margin_left = 814.136
-margin_top = 833.723
-margin_right = 1157.14
-margin_bottom = 957.723
-texture_normal = ExtResource( 2 )
-texture_hover = ExtResource( 3 )
-
-[node name="Label" type="Label" parent="."]
-margin_left = 866.0
-margin_top = 174.0
-margin_right = 1108.0
-margin_bottom = 255.0
+[node name="Label" type="Label" parent="Continue"]
+margin_left = 54.28
+margin_top = 19.471
+margin_right = 296.28
+margin_bottom = 100.471
 custom_fonts/font = SubResource( 1 )
 text = "Continuar jogo"
 align = 1
 valign = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="."]
-margin_left = 852.786
-margin_top = 400.53
-margin_right = 1094.79
-margin_bottom = 481.53
+[node name="Salvar" type="TextureButton" parent="."]
+margin_left = 1345.52
+margin_top = 345.476
+margin_right = 1688.52
+margin_bottom = 469.476
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Salvar"]
+margin_left = 43.262
+margin_top = 19.054
+margin_right = 285.266
+margin_bottom = 100.054
 custom_fonts/font = SubResource( 1 )
 text = "Salvar jogo"
 align = 1
 valign = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="."]
-margin_left = 858.786
-margin_top = 638.53
-margin_right = 1100.79
-margin_bottom = 719.53
+[node name="VoltarMenu" type="TextureButton" parent="."]
+margin_left = 1352.09
+margin_top = 579.004
+margin_right = 1695.09
+margin_bottom = 703.004
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="VoltarMenu"]
+margin_left = 42.695
+margin_top = 23.526
+margin_right = 284.699
+margin_bottom = 104.526
 custom_fonts/font = SubResource( 1 )
 text = "Voltar ao menu principal"
 align = 1
 valign = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Label4" type="Label" parent="."]
-margin_left = 868.299
-margin_top = 854.966
-margin_right = 1110.3
-margin_bottom = 935.966
+[node name="Sair" type="TextureButton" parent="."]
+margin_left = 1350.14
+margin_top = 797.723
+margin_right = 1693.14
+margin_bottom = 921.723
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Sair"]
+margin_left = 54.163
+margin_top = 21.243
+margin_right = 296.164
+margin_bottom = 102.243
 custom_fonts/font = SubResource( 1 )
 text = "Sair"
 align = 1
 valign = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
