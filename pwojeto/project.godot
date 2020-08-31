@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="PWOjeto"
+config/name="The hunter and the fox"
 run/main_scene="res://Scenes/menus/main_menu.tscn"
 run/disable_stdout=true
 config/icon="res://icon.png"
