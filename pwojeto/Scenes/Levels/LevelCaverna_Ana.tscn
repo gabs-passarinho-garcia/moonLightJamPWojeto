@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Levels/LevelCaverna.gd" type="Script" id=1]
 [ext_resource path="res://Assets/background/caverna-loopavel-corrigida.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Scenes/actors/enemies/Bat.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/actors/enemies/Skeleton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/actors/enemies/Spider.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Sounds/Sound Design/Caverna Ambiência 1.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Sounds/Trilha sonora/Cavern Song.ogg" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 55432.8, 11576.3 )
@@ -68,4 +70,14 @@ position = Vector2( 5802.48, 1136.36 )
 
 [node name="Spider3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 6335.21, 1131.02 )
+
+[node name="ambiencia" type="AudioStreamPlayer2D" parent="."]
+pause_mode = 1
+stream = ExtResource( 8 )
+max_distance = 20000.0
+
+[node name="musica" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+autoplay = true
+max_distance = 20000.0
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

@@ -29,6 +29,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_cancel"):
 		$CanvasLayer/Pause_menu.visible = true
+		$CanvasLayer/Pause_menu/AudioStreamPlayer2D.play()
 		get_tree().paused = true
 		pass
 	if Input.is_action_pressed("melee_atack"):

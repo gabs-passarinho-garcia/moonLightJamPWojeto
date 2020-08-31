@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/menus/pause_menu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/botoes/base-botao.png" type="Texture" id=2]
 [ext_resource path="res://Assets/botoes/base-botao-hover.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Fonts/Hitch-hike.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://Assets/background/tela-pause.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sounds/Trilha sonora/Música Menu.ogg" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -12,7 +13,6 @@ font_data = ExtResource( 4 )
 
 [node name="Pause_menu" type="Popup"]
 pause_mode = 2
-visible = true
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
@@ -126,3 +126,6 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
