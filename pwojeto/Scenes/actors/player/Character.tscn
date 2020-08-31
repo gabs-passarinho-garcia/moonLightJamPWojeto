@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/menus/pause_menu.tscn" type="PackedScene" id=2]
@@ -13,6 +13,9 @@
 [ext_resource path="res://Assets/Personagem/Animação WallJump/Personagem WallJump.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Personagem/Animação Dano/Personagem Dano.png" type="Texture" id=12]
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/Sounds/Sound Design/Passos (Caverna) 3.wav" type="AudioStream" id=14]
+[ext_resource path="res://Assets/Sounds/Sound Design/Tomou Dano 1.wav" type="AudioStream" id=15]
+[ext_resource path="res://Assets/Sounds/Sound Design/Ataque 1.wav" type="AudioStream" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 50.3809 )
@@ -139,7 +142,7 @@ tracks/9/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": null
+"stream": ExtResource( 14 )
 } ],
 "times": PoolRealArray( 0 )
 }
@@ -265,7 +268,7 @@ tracks/9/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": null
+"stream": ExtResource( 15 )
 } ],
 "times": PoolRealArray( 0 )
 }
@@ -403,7 +406,7 @@ tracks/10/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": null
+"stream": ExtResource( 16 )
 } ],
 "times": PoolRealArray( 0 )
 }
@@ -541,7 +544,7 @@ tracks/10/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": null
+"stream": ExtResource( 16 )
 } ],
 "times": PoolRealArray( 0 )
 }
@@ -916,7 +919,8 @@ hframes = 5
 [node name="ataque" type="Sprite" parent="." groups=[
 "characterSprite",
 ]]
-position = Vector2( 28.541, -1.1892 )
+visible = false
+position = Vector2( -24.4321, -2.24866 )
 scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 9 )
 vframes = 5
@@ -941,7 +945,6 @@ margin_bottom = 60.1815
 [node name="wall_jump" type="Sprite" parent="." groups=[
 "characterSprite",
 ]]
-visible = false
 position = Vector2( 12, 0 )
 scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 11 )

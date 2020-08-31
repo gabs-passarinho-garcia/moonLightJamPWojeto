@@ -53,7 +53,7 @@ tracks/1/keys = {
 "clips": [ {
 "end_offset": 0.301227,
 "start_offset": 0.0,
-"stream": null
+"stream": ExtResource( 3 )
 } ],
 "times": PoolRealArray( 0 )
 }

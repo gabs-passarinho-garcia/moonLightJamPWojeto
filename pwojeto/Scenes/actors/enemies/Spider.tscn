@@ -147,6 +147,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=6]
 step = 1.0
@@ -272,6 +284,7 @@ position = Vector2( 4.43469, -6.06861 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 4.24241, -3.72709 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 1 )
@@ -315,7 +328,6 @@ anims/parado = SubResource( 6 )
 anims/pulando = SubResource( 7 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-visible = false
 position = Vector2( 3.21046, 19.1956 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 3 )
@@ -339,7 +351,6 @@ scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 7 )
 vframes = 5
 hframes = 5
-frame = 23
 [connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_KnockbackTimer_timeout"]

@@ -104,7 +104,7 @@ func hit():
 	set_physics_process(false)
 	$JumpRange.visible=false
 	$Range.visible=false
-	$CollisionShape2D.disabled=true
+	#$CollisionShape2D.disabled=true
 
 
 
