@@ -894,6 +894,10 @@ extents = Vector2( 30.722, 23.408 )
 ]]
 script = ExtResource( 1 )
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer2" instance=ExtResource( 13 )]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 limit_left = 0
@@ -1020,8 +1024,4 @@ scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 12 )
 vframes = 5
 hframes = 5
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="Control" parent="CanvasLayer2" instance=ExtResource( 13 )]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
