@@ -25,7 +25,8 @@ func on_save_down():
 	Global.save_game()
 	pass
 func on_back_down():
-	get_tree().change_scene("res://Scenes/menus/main_menu.tscn")
+	Global.voltandoMenu = true
+	Loading.goto_scene("res://Scenes/menus/main_menu.tscn")
 	get_tree().paused = false
 	pass
 	

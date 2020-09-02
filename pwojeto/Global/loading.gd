@@ -2,7 +2,7 @@ extends Node2D
 
 var loader
 var wait_frames
-var time_max = 100 # msec
+var time_max = 10 # msec
 var current_scene
 var root
 # Declare member variables here. Examples:
@@ -33,7 +33,7 @@ func _deferred_goto_scene(path):
 
 	# Start your "loading..." animation.
 	$CanvasLayer/Popup/animacao.play("carregando")
-	wait_frames = 72
+	wait_frames = 1
 	set_process(true)
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,7 +49,7 @@ func _process(time):
 	if wait_frames > 0:
 		wait_frames -= 1
 		return
-
+	print("peixe")
 	var t = OS.get_ticks_msec()
 	# Use "time_max" to control for how long we block this thread.
 	while OS.get_ticks_msec() < t + time_max:

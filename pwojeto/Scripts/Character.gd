@@ -125,7 +125,7 @@ func damage(damage, attack = false):
 	$CanvasLayer2/Control.change_life(life)
 	if life<0:
 		$MorteSom.play()
-		get_tree().change_scene("res://Scenes/menus/Game_over.tscn")
+		Loading.goto_scene("res://Scenes/menus/Game_over.tscn")
 		queue_free()
 		
 func atack(body):

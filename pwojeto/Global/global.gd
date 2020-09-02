@@ -3,6 +3,7 @@ extends Node
 var cena_atual
 var life = 100
 var itens = []
+var voltandoMenu = false
 
 # Declare member variables here. Examples:
 # var a = 2
