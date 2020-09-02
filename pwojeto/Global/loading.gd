@@ -32,6 +32,7 @@ func _deferred_goto_scene(path):
 	current_scene.queue_free() # Get rid of the old scene.
 
 	# Start your "loading..." animation.
+	$CanvasLayer/Popup.visible = true
 	$CanvasLayer/Popup/animacao.play("carregando")
 	wait_frames = 72
 	set_process(true)
