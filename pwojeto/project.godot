@@ -23,6 +23,7 @@ config/windows_native_icon="res://Assets/icone/raposa_espada_final_eyeless_Zpi_i
 [autoload]
 
 Global="*res://Global/global.gd"
+Loading="*res://Global/loading.tscn"
 
 [debug]
 

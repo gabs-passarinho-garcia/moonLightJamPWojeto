@@ -43,7 +43,7 @@ func game_load():
 		cena_atual = dict.cena_atual
 		life = dict.life
 		itens = dict.itens
-		get_tree().change_scene(cena_atual)
+		Loading.goto_scene(cena_atual)
 	else:
 		print("Error: wrong JSON format, Screwed up loser")
 		return null
