@@ -29,12 +29,12 @@ func _deferred_goto_scene(path):
 	if loader == null: # Check for errors.
 		#show_error()
 		return
-	set_process(true)
 	current_scene.queue_free() # Get rid of the old scene.
 
 	# Start your "loading..." animation.
 	$CanvasLayer/Popup/animacao.play("carregando")
 	wait_frames = 72
+	set_process(true)
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
