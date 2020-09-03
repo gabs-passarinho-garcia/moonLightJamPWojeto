@@ -41,30 +41,40 @@ func _physics_process(delta):
 		ataque = true
 		damage(melee_atack_cost)
 		if direita:
+			$AtackTimer.start()
 			$AnimationPlayer.play("golpeEspadaDireita")
 		else:
+			$AtackTimer.start()
 			$AnimationPlayer.play("golpeEspadaEsquerda")
 		pass
 	if Input.is_action_pressed("left") and $WallJumpTimer.is_stopped():
 		velocity.x=-SPEED
-		if (direita == true) and (not ataque):
+		if (direita == true):
 			for i in get_tree().get_nodes_in_group("characterSprite"):
 				i.flip_h = true
 			$wall_jump.position.x = -4
+			$ataque.position.x = -24.432
+			if ataque:
+				$AnimationPlayer.play("golpeEspadaEsquerda")
 		if is_on_floor():
-			if (not ataque) and (not pulando) and (not pParade) and (not dano):
+			if (not pulando) and (not pParade) and (not ataque):
 				$AnimationPlayer.play("andando")
+				dano = false
 			#$Espada/Sprite.flip_h = true
 		direita = false
 	elif Input.is_action_pressed("right" ) and $WallJumpTimer.is_stopped():
 		velocity.x=SPEED
-		if (direita == false) and (not ataque):
+		if (direita == false):
 			for i in get_tree().get_nodes_in_group("characterSprite"):
 				i.flip_h = false
 			$wall_jump.position.x = 12
+			$ataque.position.x = 28.541
+			if ataque:
+				$AnimationPlayer.play("golpeEspadaEsquerda")
 		if is_on_floor():
-			if (not ataque) and (not pulando) and (not pParade) and (not dano):
+			if (not pulando) and (not pParade):
 				$AnimationPlayer.play("andando")
+				dano = false
 			#$Espada/Sprite.flip_h = false
 		direita = true
 	elif $WallJumpTimer.is_stopped():
@@ -129,7 +139,10 @@ func damage(damage, attack = false):
 		
 func atack(body):
 	if (body.is_in_group("enemy")):
+		var heal = body.heal
+		$CanvasLayer2/Control.change_life(life)
 		body.hit()
+		life += heal
 		pass
 	pass
 
@@ -161,3 +174,8 @@ func _on_KnockbackTimer_timeout():
 	pass # Replace with function body.
 
 
+
+
+func _on_AtackTimer_timeout():
+	ataque = false
+	pass # Replace with function body.

@@ -913,13 +913,11 @@ frame = 6
 [node name="ataque" type="Sprite" parent="." groups=[
 "characterSprite",
 ]]
-visible = false
-position = Vector2( -24.4321, -2.24866 )
+position = Vector2( 28.541, -1.1892 )
 scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 9 )
 vframes = 5
 hframes = 5
-frame = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1.88776, 0.943878 )
@@ -995,12 +993,12 @@ stream = ExtResource( 7 )
 [node name="andando" type="Sprite" parent="." groups=[
 "characterSprite",
 ]]
+visible = false
 position = Vector2( -3.77551, -0.943878 )
 scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 3 )
 vframes = 5
 hframes = 5
-frame = 6
 
 [node name="andarSom" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 14 )
@@ -1027,6 +1025,10 @@ hframes = 5
 [node name="KnockbackTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
+
+[node name="AtackTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="finished" from="MorteSom" to="." method="_on_MorteSom_finished"]
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_KnockbackTimer_timeout"]
+[connection signal="timeout" from="AtackTimer" to="." method="_on_AtackTimer_timeout"]

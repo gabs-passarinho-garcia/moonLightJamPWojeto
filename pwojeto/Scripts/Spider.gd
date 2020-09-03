@@ -14,6 +14,7 @@ var following=false
 var not_jumped=true
 var esq = false
 var toma_dano = false
+var heal = 30
 func _ready():
 	add_to_group("enemy")
 

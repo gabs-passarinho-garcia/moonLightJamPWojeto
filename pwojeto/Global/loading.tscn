@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Global/loading.gd" type="Script" id=1]
 [ext_resource path="res://Assets/loading/fox dormindo animation.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Fonts/PermanentMarker-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Sounds/Sound Design/Ambiência Floresta.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 90
@@ -36,6 +37,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("../../AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [node name="Node2D" type="Node2D"]
@@ -82,3 +97,6 @@ hframes = 9
 
 [node name="animacao" type="AnimationPlayer" parent="CanvasLayer/Popup"]
 anims/carregando = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )

@@ -6,6 +6,7 @@ var DAMAGE=25
 var knockback_speed=1000
 var following=false
 var toma_dano = false
+var heal = 15
 
 func _ready():
 	add_to_group("enemy")

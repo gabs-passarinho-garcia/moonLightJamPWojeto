@@ -22,14 +22,15 @@ func _ready():
 
 func goto_scene(path):
 	current_scene = root.get_child(root.get_child_count() -1)
+	if carregando:
+		return
+	carregando = true
 	$CanvasLayer/Popup/animacao.play("carregando")
+	
 	thread.start(self,"_goto_thread",path)
 	
 	
 func _goto_thread(path):
-	if carregando:
-		return
-	carregando = true
 	loader = ResourceLoader.load_interactive(path)
 	if loader == null: # Check for errors.
 		#show_error()
