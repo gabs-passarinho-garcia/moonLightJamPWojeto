@@ -49,3 +49,6 @@ func game_load():
 		print("Error: wrong JSON format, Screwed up loser")
 		return null
 	pass
+	
+func sair():
+	Loading.goto_scene("res://Scenes/menus/Game_over.tscn")

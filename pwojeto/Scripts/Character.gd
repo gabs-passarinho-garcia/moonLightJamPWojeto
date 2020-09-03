@@ -126,7 +126,6 @@ func damage(damage, attack = false):
 	if life<0:
 		$MorteSom.play()
 		Loading.goto_scene("res://Scenes/menus/Game_over.tscn")
-		queue_free()
 		
 func atack(body):
 	if (body.is_in_group("enemy")):

@@ -5,6 +5,7 @@ var wait_frames
 var time_max = 10 # msec
 var current_scene
 var root
+var carregando = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -19,12 +20,13 @@ func _ready():
 
 func goto_scene(path):
 	current_scene = root.get_child(root.get_child_count() -1)
-	
-
 	call_deferred("_deferred_goto_scene", path)
 	
 	
 func _deferred_goto_scene(path):
+	if carregando:
+		return
+	carregando = true
 	loader = ResourceLoader.load_interactive(path)
 	if loader == null: # Check for errors.
 		#show_error()
@@ -49,7 +51,6 @@ func _process(time):
 	if wait_frames > 0:
 		wait_frames -= 1
 		return
-	print("peixe")
 	var t = OS.get_ticks_msec()
 	# Use "time_max" to control for how long we block this thread.
 	while OS.get_ticks_msec() < t + time_max:
@@ -72,6 +73,8 @@ func _process(time):
 
 func set_new_scene(scene_resource):
 	current_scene = scene_resource.instance()
-	get_node("/root").add_child(current_scene)
 	$CanvasLayer/Popup.visible = false
 	$CanvasLayer/Popup/animacao.stop()
+	carregando = false
+	get_node("/root").add_child(current_scene)
+	

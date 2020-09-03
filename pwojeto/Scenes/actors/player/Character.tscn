@@ -15,7 +15,7 @@
 [ext_resource path="res://Assets/Sounds/Sound Design/Tomou Dano 1.wav" type="AudioStream" id=15]
 [ext_resource path="res://Assets/Sounds/Sound Design/Ataque 1.wav" type="AudioStream" id=16]
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 25.7914
 height = 56.4277
 
@@ -923,7 +923,7 @@ frame = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1.88776, 0.943878 )
-shape = SubResource( 9 )
+shape = SubResource( 1 )
 
 [node name="WallJumpTimer" type="Timer" parent="."]
 wait_time = 0.5
