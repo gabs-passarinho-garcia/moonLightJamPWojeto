@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Efeitos Caverna.wav-0a61d64f889012edeca19635edfe242d.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Sound Design/Efeitos Caverna.wav"
+dest_files=[ "res://.import/Efeitos Caverna.wav-0a61d64f889012edeca19635edfe242d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

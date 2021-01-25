@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Caverna Ambiência 1.wav-229f957091202209923a243a09cff3d1.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Sound Design/Caverna Ambiência 1.wav"
+dest_files=[ "res://.import/Caverna Ambiência 1.wav-229f957091202209923a243a09cff3d1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

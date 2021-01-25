@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Passos (Caverna) 4.wav-e76fb00c7a178740f094e060d28a8d09.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Sound Design/Passos (Caverna) 4.wav"
+dest_files=[ "res://.import/Passos (Caverna) 4.wav-e76fb00c7a178740f094e060d28a8d09.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

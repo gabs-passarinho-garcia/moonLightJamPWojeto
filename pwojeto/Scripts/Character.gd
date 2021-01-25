@@ -7,10 +7,14 @@ var JUMPSPEED=600
 var velocity=Vector2()
 var has_double_jump=true
 var life=100
+var itens = []
 var double_jump_cost=10
+var is_dano = false
 var wall_jump_cost=5
 var has_wall_jump=true
-var melee_atack_cost = 1
+var melee_atack_cost = 5
+var KNOCKBACK_ANGLE=PI/4
+var KNOCKBACK_SPEED=1000
 onready var espadaDir = $Espada
 onready var espadaEsq = $Espada2
 var ataque = false
@@ -23,41 +27,54 @@ func _ready():
 	espadaEsq.connect("body_entered",self,"atack")
 	set_physics_process(true)
 	life = Global.life
+	itens = Global.itens
 	pass # Replace with function body.
 
 func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_cancel"):
 		$CanvasLayer/Pause_menu.visible = true
+		$CanvasLayer/Pause_menu/AudioStreamPlayer2D.play()
 		get_tree().paused = true
 		pass
-	if Input.is_action_pressed("melee_atack"):
+	if Input.is_action_just_pressed("melee_atack"):
 		ataque = true
+		damage(melee_atack_cost)
 		if direita:
+			$AtackTimer.start()
 			$AnimationPlayer.play("golpeEspadaDireita")
 		else:
+			$AtackTimer.start()
 			$AnimationPlayer.play("golpeEspadaEsquerda")
 		pass
 	if Input.is_action_pressed("left") and $WallJumpTimer.is_stopped():
 		velocity.x=-SPEED
-		if direita == true:
+		if (direita == true):
 			for i in get_tree().get_nodes_in_group("characterSprite"):
 				i.flip_h = true
 			$wall_jump.position.x = -4
+			$ataque.position.x = -24.432
+			if ataque:
+				$AnimationPlayer.play("golpeEspadaEsquerda")
 		if is_on_floor():
-			if (not ataque) and (not pulando) and (not pParade) and (not dano):
+			if (not pulando) and (not pParade) and (not ataque):
 				$AnimationPlayer.play("andando")
+				dano = false
 			#$Espada/Sprite.flip_h = true
 		direita = false
 	elif Input.is_action_pressed("right" ) and $WallJumpTimer.is_stopped():
 		velocity.x=SPEED
-		if direita == false:
+		if (direita == false):
 			for i in get_tree().get_nodes_in_group("characterSprite"):
 				i.flip_h = false
 			$wall_jump.position.x = 12
+			$ataque.position.x = 28.541
+			if ataque:
+				$AnimationPlayer.play("golpeEspadaEsquerda")
 		if is_on_floor():
-			if (not ataque) and (not pulando) and (not pParade) and (not dano):
+			if (not pulando) and (not pParade):
 				$AnimationPlayer.play("andando")
+				dano = false
 			#$Espada/Sprite.flip_h = false
 		direita = true
 	elif $WallJumpTimer.is_stopped():
@@ -108,18 +125,24 @@ func wall_jump():
 			$wall_jump.position.x = -4
 			pass
 func damage(damage, attack = false):
+	if is_dano:
+		return
 	if attack:
+		knockback()
 		$AnimationPlayer.play("dano")
 	life-=damage
+	#print("dano =",damage)
+	$CanvasLayer2/Control.change_life(life)
 	if life<0:
 		$MorteSom.play()
-		get_tree().change_scene("res://Scenes/menus/Game_over.tscn")
-		queue_free()
+		Loading.goto_scene("res://Scenes/menus/Game_over.tscn")
 		
 func atack(body):
 	if (body.is_in_group("enemy")):
+		var heal = body.heal
+		$CanvasLayer2/Control.change_life(life)
 		body.hit()
-		damage(melee_atack_cost)
+		life += heal
 		pass
 	pass
 
@@ -129,4 +152,30 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	pulando = false
 	pParade = false
 	dano = false
+	pass # Replace with function body.
+
+func get_Item(item):
+	if not (item in itens):
+		itens.append(item)
+		pass
+	pass
+
+func knockback():
+	$KnockbackTimer.start()
+	is_dano=true
+	if velocity.x>0:
+		velocity=Vector2(0,-1).rotated(KNOCKBACK_ANGLE)*KNOCKBACK_SPEED
+	else:
+		velocity=Vector2(0,-1).rotated(-KNOCKBACK_ANGLE)*KNOCKBACK_SPEED
+
+
+func _on_KnockbackTimer_timeout():
+	is_dano=false
+	pass # Replace with function body.
+
+
+
+
+func _on_AtackTimer_timeout():
+	ataque = false
 	pass # Replace with function body.

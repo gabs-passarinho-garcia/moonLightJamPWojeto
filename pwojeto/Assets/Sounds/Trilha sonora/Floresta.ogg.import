@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Floresta.ogg-92f9f763900de01e92739a67f7d3ee7d.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Trilha sonora/Floresta.ogg"
+dest_files=[ "res://.import/Floresta.ogg-92f9f763900de01e92739a67f7d3ee7d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
